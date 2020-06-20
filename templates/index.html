@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style>
+    body {
+    background-image: url('https://i.kym-cdn.com/entries/icons/facebook/000/006/360/gottago.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block title %}
+Home Page
+{% endblock %}
+
+
+
+{% block content %}
+<!---------------------------Script to acquire temperatures------------------------------->
+<!--
+<script type="text/javascript">
+    var intervalID = setInterval(update_values,1000);
+    
+      function update_values() {
+            $.getJSON($SCRIPT_ROOT + '/_stuff',
+                   
+          function(data) {
+            $('#result').text(data.result);
+            console.log(data)
+          });
+          
+        };
+        
+        function stopTextColor() {
+          clearInterval(intervalID);
+        }
+        
+    </script>
+    <body onload="update_values();">
+    <h1>Dynamic Temperature</h1>
+    <p>
+        <span id="result">?</span>
+    <script>
+    document.getElementById("result").innerHTML;
+    </script>
+<button onclick="stopTextColor();">Stop</button>
+-->
+
+
+
+
+
+
+
+
+
+
+</body>
+<!-----------------------------------Script End-------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<script type="text/javascript">
+    var intervalID = setInterval(update_values,1000);
+    
+      function update_values() {
+            $.getJSON($SCRIPT_ROOT + '/_stuff',
+                   
+          function(data) {
+            $('#result').text(data.result);
+            console.log(data)
+          });
+        };  
+        function stopTextColor() {
+          clearInterval(intervalID);
+        }        
+</script>
+<body onload="update_values();">
+    <h1>Dynamic Update</h1>
+    <p>
+        <span id="result">?</span>
+<script>
+    document.getElementById("result").innerHTML;
+</script>
+
+<button onclick="stopTextColor();">Stop</button>
+</body>
+
+<body onload="update_values();">
+    <p style="text-align:center">Temperature Reading (Celcius): 
+        <span id="val1">{{val1}}</span>
+    <script>
+        document.getElementById("val1").innerHTML;
+    </script>
+</body>
+-->
+
+<!--
+    <div style="text-align:center" id="temperature">{{val1}}</div>
+</p>
+<p style="text-align:center">Current blink speed (Blink/Second): {{blinkSpeed}}</p>
+<form style = "text-align:center" method="POST" action="/send">
+    <div class="form-group">
+        <input type="text" name="blinkSpeed">
+    </div>
+</form>
+
+<div class = "text-center" style="height: 50px;">
+    <button type="button" class="btn btn-success btn-lrg">Set Blink On</button>
+    <button type="button" class="btn btn-danger btn-lrg">Set Blink Off</button>
+</div>
+<div class = "text-center">
+    
+    <button type="button" class="btn btn-success btn-lrg">Turn LED On</button>
+    <button type="button" class="btn btn-danger btn-lrg">Turn LED Off</button>
+</div>
+
+
+
+<script type ="text/javascript">
+    var intervalID = setInterval(update_values, 1000);
+
+    function update_values() {
+        $.getJSON($SCRIPT_ROOT + "/_temperature",
+
+            function(data) {
+                $("#val1").text(data.val1)
+                Console.log("Updated value: " + data)
+            }
+        )
+    };
+</script>
+
+
+<h1 style="text-align:center">Arduino GUI </h1>
+
+
+
+<body onload="update_values();">
+    <p style="text-align:center">Temperature Reading (Celcius): 
+        <span id="val1">{{val1}}</span>
+    <script>
+        document.getElementById("val1").innerHTML;
+    </script>
+</body>
+
+
+
+    <div style="text-align:center" id="temperature">{{val1}}</div>
+</p>
+<p style="text-align:center">Current blink speed (Blink/Second): {{blinkSpeed}}</p>
+<form style = "text-align:center" method="POST" action="/send">
+    <div class="form-group">
+        <input type="text" name="blinkSpeed">
+    </div>
+</form>
+
+<div class = "text-center" style="height: 50px;">
+    <button type="button" class="btn btn-success btn-lrg">Set Blink On</button>
+    <button type="button" class="btn btn-danger btn-lrg">Set Blink Off</button>
+</div>
+<div class = "text-center">
+    
+    <button type="button" class="btn btn-success btn-lrg">Turn LED On</button>
+    <button type="button" class="btn btn-danger btn-lrg">Turn LED Off</button>
+</div>
+-->
+
+
+{% endblock %}

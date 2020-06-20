@@ -1,0 +1,51 @@
+{% extends "dy0.html" %}
+
+{% block style %}
+<style>
+    body {
+    background-image: url('https://i.kym-cdn.com/entries/icons/facebook/000/006/360/gottago.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+<h1>Hello People</h1>
+{% endblock %}
+
+
+{% block body %}
+<script type="text/javascript">
+var intervalID = setInterval(update_values,1000);
+
+  function update_values() {
+        $.getJSON($SCRIPT_ROOT + '/_stuff',
+               
+      function(data) {
+        $('#result').text(data.result);
+        console.log(data)
+      });
+      
+    };
+    function stopTextColor() {
+      clearInterval(intervalID);
+    }
+</script>
+<body onload="update_values();">
+    <div class = "text-center" style="height: 150px;">
+        <h1>Arduino GUI</h1>
+        <h3>
+            Current Temperature:
+            <span id="result">?</span>
+            C
+        </h3>
+    
+    <script>
+    document.getElementById("result").innerHTML;
+    </script>
+        <button type="button" class="btn btn-warning btn-sm" onclick="stopTextColor();">Stop Temperature</button>
+    </div>
+</body>
+{% endblock %}
