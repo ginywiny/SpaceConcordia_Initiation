@@ -1,3 +1,4 @@
+<!--Code dynamic update referenced from https://github.com/pratik55/Python-Flask-dynamic-update--->
 {% extends "dy0.html" %}
 
 {% block style %}
@@ -12,9 +13,8 @@
 {% endblock %}
 
 {% block title %}
-<h1>Hello People</h1>
+<h1 style="margin-left: 10px">Arduino GUI</h1>
 {% endblock %}
-
 
 {% block body %}
 <script type="text/javascript">
@@ -35,7 +35,7 @@ var intervalID = setInterval(update_values,1000);
 </script>
 <body onload="update_values();">
     <div class = "text-center" style="height: 150px;">
-        <h1>Arduino GUI</h1>
+        <h1>--------------------</h1>
         <h3>
             Current Temperature:
             <span id="result">?</span>
@@ -45,7 +45,37 @@ var intervalID = setInterval(update_values,1000);
     <script>
     document.getElementById("result").innerHTML;
     </script>
-        <button type="button" class="btn btn-warning btn-sm" onclick="stopTextColor();">Stop Temperature</button>
-    </div>
+      <form action="/" method="POST"></form>
+          <button type="button" class="btn btn-warning" onclick="stopTextColor();">Stop Temperature</button>
+          <button type="submit" class="btn btn-info" name="submit" value="Turn On" >Start Temperature</button>
+        </form>
+      </div>
 </body>
+{% endblock %}
+
+{% block button %}
+
+<form action="/" method="POST">
+  <div class = "text-center" style="height: 50px;">
+     <p> Input Blink Speed: <input type="text" value="speed"></p>
+  </div>
+</form>
+
+<form action="/" method="POST">
+  <div class = "text-center" style="height: 60px;">
+    <p> 
+    <input style="height: 50px;" type="submit" type="button" class="btn btn-secondary" name="submit" value="Blink On">
+    <!--<input  type="submit" type="button" class="btn btn-danger btn-lrg" name="submit" value="Blink Off">-->
+  </p>
+  </div>
+</form>
+
+  <form action="/" method="POST">
+    <div class = "text-center">
+        <p> 
+        <input type="submit" type="button" class="btn btn-success btn-lrg" name="submit" value="Turn On">
+        <input type="submit" type="button" class="btn btn-danger btn-lrg" name="submit" value="Turn Off"> 
+      </p>
+    </div>
+  </form> 
 {% endblock %}
