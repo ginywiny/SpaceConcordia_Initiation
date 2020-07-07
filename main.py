@@ -10,13 +10,22 @@ app = Flask(__name__)
 # #Display the entire GUI, and cause LED to turn on, off, blink, not blink, display temperature and change blink speed
 @app.route("/", methods = ['POST', 'GET'])
 def home():
-    if request.method == "POST": 
+    if request.method == "POST":
+        if request.form['submit'] == "Start Temperature":
+            print("START TIME FROM MAIN")
+            if (arduinoObj.getState() == 1):
+                arduinoObj.setLight()
+            else :
+                arduinoObj.setLightOff()
+
         if request.form['submit'] == 'Turn On':
             print("TURN ON FROM MAIN")
+            arduinoObj.setState(1)
             arduinoObj.setLight()
 
         elif request.form['submit'] == 'Turn Off':
             print("TURN OFF FROM MAIN")
+            arduinoObj.setState(0)
             arduinoObj.setLightOff()
 
         elif request.form['submit'] == "Blink On":

@@ -2,24 +2,32 @@ import serial
 import time
 
 arduino = '/dev/ttyACM0'
-serialLED = serial.Serial(arduino, 9600, timeout=1)
 # serialLED.timeout = 1
 
 class Arduino():
 
-    blink = 0
+    def __init__(self):
+        self.blink = 0
+        self.ledState = 1
+        self.serialLED = serial.Serial(arduino, 9600, timeout=1)
 
     def setBlink(self, blinkBit):
-        blink = blinkBit
+        self.blink = blinkBit
+
+    def setState(self, state):
+        self.ledState = state
+
+    def getState(self):
+        return self.ledState
 
     # Set light to on
     def setLight(self):
-        serialLED.write('h'.encode())
+        self.serialLED.write('h'.encode())
         #serialLED.close()
 
     # Set light to off
     def setLightOff(self):
-        serialLED.write('l'.encode())
+        self.serialLED.write('l'.encode())
         #serialLED.close()
 
     # Set light to blink
@@ -28,9 +36,9 @@ class Arduino():
             if (breakBit == 1):
                 serialLED.write('l'.encode())
                 break
-            serialLED.write('l'.encode())
+            self.serialLED.write('l'.encode())
             time.sleep(1)
-            serialLED.write('h'.encode())
+            self.serialLED.write('h'.encode())
             time.sleep(1)
 
     if __name__ == "__main__":

@@ -47,7 +47,7 @@ var intervalID = setInterval(update_values,1000);
     </script>
       <form action="/" method="POST"></form>
           <button type="button" class="btn btn-warning" onclick="stopTextColor();">Stop Temperature</button>
-          <button type="submit" class="btn btn-info" name="submit" value="Turn On" >Start Temperature</button>
+          <!--<button type="submit" type="button" class="btn btn-info" name="submit" value="Start Temperature" >Start Temperature</button>-->
         </form>
       </div>
 </body>
@@ -57,7 +57,7 @@ var intervalID = setInterval(update_values,1000);
 
 <form action="/" method="POST">
   <div class = "text-center" style="height: 50px;">
-     <p> Input Blink Speed: <input type="text" value="speed"></p>
+     <p> Input Blink Duration: <input type="text" value="speed"></p>
   </div>
 </form>
 
@@ -74,7 +74,8 @@ var intervalID = setInterval(update_values,1000);
     <div class = "text-center">
         <p> 
         <input type="submit" type="button" class="btn btn-success btn-lrg" name="submit" value="Turn On">
-        <input type="submit" type="button" class="btn btn-danger btn-lrg" name="submit" value="Turn Off"> 
+        <input type="submit" type="button" class="btn btn-danger btn-lrg" name="submit" value="Turn Off">
+        <button type="submit" type="button" class="btn btn-info" name="submit" value="Start Temperature" >Start Temperature</button> 
       </p>
     </div>
   </form> 
