@@ -32,12 +32,10 @@ class Arduino():
     # Set light to blink
     def setBlink(self, blink):
         for i in range(0,5):
-            self.serialLED.write('l'.encode())
-            time.sleep(blink)
-            #time.sleep(self.blinkSpeed)
             self.serialLED.write('h'.encode())
             time.sleep(blink)
-            #time.sleep(self.blinkSpeed)
+            self.serialLED.write('l'.encode())
+            time.sleep(blink)
 
     if __name__ == "__main__":
         print(__name__)

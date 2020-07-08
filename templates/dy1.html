@@ -74,8 +74,33 @@ var intervalID = setInterval(update_values,1000);
         <p> 
         <input type="submit" type="button" class="btn btn-success btn-lg" name="submitOn" value="Turn On">
         <input type="submit" type="button" class="btn btn-danger btn-lg" name="submitOff" value="Turn Off">
-        <input type="submit" type="button" class="btn btn-secondary btn-lg" name="submitBlink" value="Blink On">
+        <input type="submit" type="button" class="btn btn-secondary btn-lg" name="submitBlink" value="Default Blink On">
       </p>
     </div>
-  </form> 
+  </form>
+  
+
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+      {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <span>{{message}}</span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+
+
+
+    {% endif %}
+  {% endwith %}
+</div>
+
+
+
+
+
 {% endblock %}

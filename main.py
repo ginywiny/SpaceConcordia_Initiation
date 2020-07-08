@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request, jsonify
+from flask import Flask, redirect, url_for, render_template, request, jsonify, flash
 from arduinoWrite import *
 import arduinoWrite
 import serial
@@ -6,6 +6,7 @@ import time
 
 arduinoObj = Arduino()
 app = Flask(__name__)
+app.secret_key = "SEKRETKEY_WOW"
 
 # #Display the entire GUI, and cause LED to turn on, off, blink, not blink, display temperature and change blink speed
 @app.route("/", methods = ['POST', 'GET'])
@@ -37,8 +38,6 @@ def home():
             arduinoObj.setBlink(1)  
             print("BLINK ON FROM MAIN")
 
-        
-
         #  if (request.form["submit"] == 'submitBlink'):
         if (not request.form.get("submitSpeed") is None):
             if (arduinoObj.getState() == 1):
@@ -47,18 +46,27 @@ def home():
                 arduinoObj.setLightOff() 
 
             blinkSpeedString = request.form.get("submitSpeed")    #Default value is 1 if nothing entered
-            blinkSpeedFloat = float(blinkSpeedString)
+            
+            if (blinkSpeedString.isdigit()):
+                blinkSpeedFloat = float(blinkSpeedString)
+                flash("Valid blink duration set to %s" % blinkSpeedString)
+            
+            else:
+                flash("Invalid blink duration \"%s\", default duration set to 1" % blinkSpeedString)
+                blinkSpeedFloat = 1
+            
             print("Blinkspeed is: %s" % blinkSpeedString)
 
-            #blinkSpeed = (request.form.get("submitBlink", False))    #Default value is 1 if nothing entered
             if (blinkSpeedFloat <= 5 and blinkSpeedFloat > 0 and len(blinkSpeedString) <= 2 and len(blinkSpeedString) >= 0 and blinkSpeedString.isdigit()):
                 print("Blinkspeed VALID: %s" % blinkSpeedString)
                 arduinoObj.setBlinkSpeed(blinkSpeedFloat)
                 arduinoObj.setBlink(blink=blinkSpeedFloat)
+                return redirect(request.url)
             else:
-                arduinoObj.setBlinkSpeed(blink=1)
                 print("Blinkspeed INVALID: %s" % blinkSpeedString)
+                arduinoObj.setBlinkSpeed(blink=1)
                 arduinoObj.setBlink(blink=1)
+                return redirect(request.url)
 
         else: 
             pass
