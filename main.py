@@ -45,7 +45,7 @@ def home():
             else :
                 arduinoObj.setLightOff() 
 
-            blinkSpeedString = request.form.get("submitSpeed")    #Default value is 1 if nothing entered
+            blinkSpeedString = request.form.get("submitSpeed")   
             
             if (blinkSpeedString.isdigit()):
                 blinkSpeedFloat = float(blinkSpeedString)
@@ -53,7 +53,7 @@ def home():
             
             else:
                 flash("Invalid blink duration \"%s\", default duration set to 1" % blinkSpeedString)
-                blinkSpeedFloat = 1
+                blinkSpeedFloat = 1   #Default value is 1 if nothing entered, or incorrectly entered
             
             print("Blinkspeed is: %s" % blinkSpeedString)
 
